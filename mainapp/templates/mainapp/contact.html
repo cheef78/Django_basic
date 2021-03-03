@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>Контакты</title>
-	<link rel="stylesheet" type="text/css" href="/static/style.css">
-	<link rel="stylesheet" href="/static/fonts/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href = {% static 'style.css' %}>
+	<link rel="stylesheet" href= {% static 'fonts/font-awesome/css/font-awesome.css' %}>
 </head>
 <body>
 	<div class="container">
@@ -93,7 +94,7 @@
                 </form>
             </div>
         </div>
-        <p class="small">&copy; GB 2017</p>
+        <p class="small">&copy; GB. {{ some_name }}. {% now 'Y' %} г.</p>
         <div class="social">
             <a href="#" class="social1"></a>
             <a href="#" class="social2"></a>

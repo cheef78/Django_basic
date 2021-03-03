@@ -24,14 +24,14 @@ html, body {
 
 .slider {
 	height: 800px;
-	background-image: url(/static/img/slider.jpg); 
+	background-image: url(static/img/slider.jpg); 
 	padding-left: 98px;
 	padding-right: 211px;
 	position: relative;
 }
 
 .logo {
-	background-image: url(/static/img/logo.png);
+	background-image: url(static/img/logo.png);
 	margin-top: 63px;
 	width: 185px;
 	height: 22px;
