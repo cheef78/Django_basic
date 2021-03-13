@@ -3,6 +3,7 @@ from django.core.management import BaseCommand
 from django.conf import settings
 import os
 from mainapp.models import ProductCategory, Product
+from authapp.models import ShopUser
 from django.contrib.auth.models import User
 
 def load_from_json(file_name):
@@ -25,7 +26,7 @@ class Command (BaseCommand):
             _cat = ProductCategory.objects.get(name=prod['category'])
             prod['category'] = _cat
             Product.objects.create(**prod)
-        User.objects.create_superuser ('django','django@local.db', 'geekbrains')
+        ShopUser.objects.create_superuser ('django','django@local.db', 'geekbrains', age=43)
 
        
 
