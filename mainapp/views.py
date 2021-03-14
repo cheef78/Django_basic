@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.conf import settings
 from mainapp.models import Product, ProductCategory
+
 import os
 import json
 
@@ -8,6 +9,7 @@ import json
 
 def main (request):
     products = Product.objects.all()[:4]
+    
     content = {
         'some_name' : 'Oleg Suslov',
         'title' : 'Главная',
