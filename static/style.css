@@ -1071,3 +1071,9 @@ td:first-child {
 .related-products a:hover .text{
 	display: block;
 }
+
+.my-flex-container{
+	display: inline-flex;
+	justify-content: center;
+	flex-direction: row;
+}
