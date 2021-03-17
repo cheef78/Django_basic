@@ -3,9 +3,16 @@
 <li><a href={% url 'contact' %} {% if request.resolver_match.url_name == 'contact' %} class="active" {% endif %} >контакты</a></li>
 {% if user.is_authenticated %}
 <li>
-<a href= "{% url 'auth:edit' %}">
+<p align="center">
 {{ user.first_name|default:'Пользователь' }}
-</a>
+<br>
+<a href="{% url 'auth:edit' %}"><img src='/media/{{ user.avatar }}' width="50" 
+   height="50" border="0" alt="NoPic"/></a>
+ </p>
+{% comment %} <a href= "{% url 'auth:edit' %}">
+<img src='/media/{{ user.avatar }}' width="40" height="40" alt="lorem" />
+{{ user.first_name|default:'Пользователь' }}
+</a> {% endcomment %}
 </li>
 <li> 
 <a href="{% url 'auth:logout' %}">выйти</a>

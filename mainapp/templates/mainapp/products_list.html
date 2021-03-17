@@ -1,0 +1,49 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="hero-white">
+	<div class="header clearfix">
+		<a href={% url 'main' %} class="logo"
+				style = "background-image: url('{% static 'img/logo.png' %}')";
+				>
+				</a>
+				<ul class="menu">
+					{% include 'mainapp/includes/inc_main_menu.html' %}
+				</ul>
+				<a href="#" class="search"
+				style = "background-image: url('{% static 'img/search.png' %}')";
+				>
+				</a>
+                <a href="#" class="basket"
+				style = "background-image: url('{% static 'img/basket.png' %}')";
+				>
+				</a>
+			</div>
+</div>
+<div class="links clearfix">
+	{% include 'mainapp/includes/inc_categ_menu.html' %}	
+</div>        
+<div class = "products_list">
+   <div class = "title_clearfix">
+       <h2> Категория: "{{ category.name|title }}" </h2>
+   </div>
+   <div class = "category-products clearfix">
+   {% for product in products %}
+       <div class = "block">
+        <a href = "#">
+            <img src = "/media/{{ product.image }}" alt = "product" >
+            <div class = "text">
+                <img src = "{% static 'img/icon-hover.png' %}" alt = "hover">
+                <h4>{{ product.name }}</h4>
+                <p>{{ product.descript}}</p>
+            </div >
+        </a>
+       </div>
+    {% endfor %}
+    </div >
+</div >
+
+<div class = "clr" >
+</div >
+{% endblock %}
