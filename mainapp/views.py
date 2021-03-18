@@ -55,9 +55,9 @@ def products (request, pk=None):
     print(pk)
     title = 'продукты'
     links_menu = ProductCategory.objects.all()
-    basket = []
+    basket = 0
     if request.user.is_authenticated:
-        basket = Basket.objects.filter(user=request.user)
+        basket = sum(list(Basket.objects.filter(user=request.user).values_list('quantity', flat=True)))
 
     if pk is not None:
         if pk == 0:
