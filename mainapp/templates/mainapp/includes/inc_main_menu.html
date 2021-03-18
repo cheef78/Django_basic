@@ -1,3 +1,4 @@
+{% load static %}
 <li><a href={% url 'main' %} {% if request.resolver_match.url_name == 'main' %} class="active" {% endif %}>домой</a></li>
 <li><a href={% url 'products:products' %} {% if 'products' in request.resolver_match.namespace %} class="active" {% endif %}>продукты</a></li>
 <li><a href={% url 'contact' %} {% if request.resolver_match.url_name == 'contact' %} class="active" {% endif %} >контакты</a></li>
@@ -19,4 +20,15 @@
 {% else %}
 <a href="{% url 'auth:login' %}">войти</a>
 {% endif %}
+</li>
+
+<li>
+<a href="#" class="search" style = "background-image: url('{% static 'img/search.png' %}')";>
+</a>
+</li>
+<li>
+<a href="{% url 'basket:view' %}" class="basket" style = "background-image: url('{% static 'img/basket.png' %}')">
+
+<span> {% if basket %} {{ basket|length }} {% endif %} </span>
+</a>
 </li>
