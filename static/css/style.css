@@ -78,6 +78,7 @@ html, body {
 	position: absolute;
 	top: 63px;
 	left: 1176px;
+	background: no-repeat;
 }
 .basket {
 	display: block;
@@ -86,6 +87,7 @@ html, body {
 	position: absolute;
 	top: 63px;
 	left: 1210px;
+	background: no-repeat;
 }
 
 .clearfix:after {
