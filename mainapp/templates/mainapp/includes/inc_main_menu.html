@@ -8,10 +8,6 @@
 <br>
 <a href="{% url 'auth:edit' %}"><img src='/media/{{ user.avatar }}' width="50" 
    height="50" border="0" alt="NoPic"/></a>
- {% comment %} <a href= "{% url 'auth:edit' %}">
-<img src='/media/{{ user.avatar }}' width="40" height="40" alt="lorem" />
-{{ user.first_name|default:'Пользователь' }}
-</a> {% endcomment %}
 </li>
 <li> 
 <a href="{% url 'auth:logout' %}">выйти</a>
@@ -25,17 +21,8 @@
 <li>
 <a href="{% url 'basket:view' %}" class="basket" style = "background-image: url('{% static 'img/basket.png' %}');" >
     <span style = 
-    "text-align:center;
-    left: 5;"> 
+    "text-align:right;"> 
     {% if basket %} {{ basket }} {% endif %} </span>
 </a>
 </li>
 
-{% comment %} <a href="#" class="search"
-				style = "background-image: url('{% static 'img/search.png' %}');"
-				>
-				</a>
-<a href="#" class="basket"
-				style = "background-image: url('{% static 'img/basket.png' %}');"
-				>
-				</a> {% endcomment %}

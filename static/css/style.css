@@ -80,7 +80,7 @@ html, body {
 	left: 1176px;
 }
 .basket {
-	display: inline-block;
+	display: block;
 	width: 23px;
 	height: 23px;	
 	position: absolute;

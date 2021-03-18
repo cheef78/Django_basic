@@ -81,6 +81,7 @@ def products (request, pk=None):
             'category' : category,
             'products' : products,
             'basket' : basket,
+            'some_name' : 'Oleg Suslov',
         }
         return render(request, 'mainapp/products_list.html' , content)
     same_products = Product.objects.all()[ 3 : 5 ]
@@ -89,5 +90,6 @@ def products (request, pk=None):
         'links_menu' : links_menu,
         'same_products' : same_products,
         'basket' : basket,
+        'some_name' : 'Oleg Suslov',
     }
     return render(request, 'mainapp/products.html' , content)
