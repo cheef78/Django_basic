@@ -81,8 +81,8 @@ html, body {
 	background: no-repeat;
 }
 .basket {
-	display: block;
-	width: 23px;
+	
+	width: 50px;
 	height: 23px;	
 	position: absolute;
 	top: 63px;
