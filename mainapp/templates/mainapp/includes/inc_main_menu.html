@@ -4,13 +4,11 @@
 <li><a href={% url 'contact' %} {% if request.resolver_match.url_name == 'contact' %} class="active" {% endif %} >контакты</a></li>
 {% if user.is_authenticated %}
 <li>
-<p align="center">
 {{ user.first_name|default:'Пользователь' }}
 <br>
 <a href="{% url 'auth:edit' %}"><img src='/media/{{ user.avatar }}' width="50" 
    height="50" border="0" alt="NoPic"/></a>
- </p>
-{% comment %} <a href= "{% url 'auth:edit' %}">
+ {% comment %} <a href= "{% url 'auth:edit' %}">
 <img src='/media/{{ user.avatar }}' width="40" height="40" alt="lorem" />
 {{ user.first_name|default:'Пользователь' }}
 </a> {% endcomment %}
@@ -21,14 +19,23 @@
 <a href="{% url 'auth:login' %}">войти</a>
 {% endif %}
 </li>
-
 <li>
-<a href="#" class="search" style = "background-image: url('{% static 'img/search.png' %}')";>
-</a>
+<a href="#" class="search" style = "background-image: url('{% static 'img/search.png' %}');"></a>
 </li>
 <li>
-<a href="{% url 'basket:view' %}" class="basket" style = "background-image: url('{% static 'img/basket.png' %}')">
-
-<span> {% if basket %} {{ basket|length }} {% endif %} </span>
+<a href="{% url 'basket:view' %}" class="basket" style = "background-image: url('{% static 'img/basket.png' %}');" >
+    <span style = 
+    "text-align:center;
+    left: 5;"> 
+    {% if basket %} {{ basket }} {% endif %} </span>
 </a>
 </li>
+
+{% comment %} <a href="#" class="search"
+				style = "background-image: url('{% static 'img/search.png' %}');"
+				>
+				</a>
+<a href="#" class="basket"
+				style = "background-image: url('{% static 'img/basket.png' %}');"
+				>
+				</a> {% endcomment %}

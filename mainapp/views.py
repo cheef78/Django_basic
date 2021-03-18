@@ -10,11 +10,16 @@ import json
 
 def main (request):
     products = Product.objects.all()[:4]
+    basket = 0
+    if request.user.is_authenticated:
+        basket = sum(list(Basket.objects.filter(user=request.user).values_list('quantity', flat = True)))
     
     content = {
         'some_name' : 'Oleg Suslov',
         'title' : 'Главная',
-        'products' : products
+        'products' : products,
+        'basket' : basket,
+
     }
     return render (request, 'mainapp/index.html', content)
 
@@ -36,6 +41,9 @@ def main (request):
     return render (request, 'mainapp/products.html', content) """
 
 def contact (request):
+    basket = 0
+    if request.user.is_authenticated:
+        basket = sum(list(Basket.objects.filter(user=request.user).values_list('quantity', flat = True)))
     
     contacts_data = []
     with open (os.path.join(settings.BASE_DIR, 'contacts.json'), 'r', encoding='utf-8') as f:
@@ -45,7 +53,8 @@ def contact (request):
     content = {
         'some_name' : 'Oleg Suslov',
         'title' : 'Контакты',
-        'contacts_data' : contacts_data
+        'contacts_data' : contacts_data,
+        'basket' : basket,
     }
     return render (request, 'mainapp/contact.html', content)
 
@@ -57,8 +66,8 @@ def products (request, pk=None):
     links_menu = ProductCategory.objects.all()
     basket = 0
     if request.user.is_authenticated:
-        basket = sum(list(Basket.objects.filter(user=request.user).values_list('quantity', flat=True)))
-
+        basket = sum(list(Basket.objects.filter(user=request.user).values_list('quantity', flat = True)))
+        print (basket)
     if pk is not None:
         if pk == 0:
             products = Product.objects.all().order_by( 'price' )
@@ -78,6 +87,7 @@ def products (request, pk=None):
     content = {
         'title' : title,
         'links_menu' : links_menu,
-        'same_products' : same_products
+        'same_products' : same_products,
+        'basket' : basket,
     }
     return render(request, 'mainapp/products.html' , content)
