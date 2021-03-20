@@ -16,17 +16,21 @@
 {% endif %}
 </li>
 <li>
-<a href="#" class="search" style = "background-image: url('{% static 'img/search.png' %}'); "></a>
+<a href="#" class="search" style = "background-image: url('{% static 'img/search.png' %}');  "></a>
 </li>
 <li>
     <a href="{% url 'basket:view' %}" class="basket" style = "background-image: url('{% static 'img/basket.png' %}'); padding:0;" >
     <span style = 
     "text-align: center;
-    
-    float:right;
-    font-size: 15pt;
-    padding:0;"> 
-    {% if basket %} {{ basket }} {% endif %} </span>
+    font-size: 7pt;
+    padding:0;
+    width:300px;
+    padding-left:20px;"> 
+    {% if basket %}
+    {{ basket.0.total_cost|floatformat:0 }} руб
+    ({{ basket.0.total_quantity }} шт)
+    {% endif %} 
+    </span>
     </a>
 </li>
 

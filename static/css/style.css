@@ -26,7 +26,7 @@ html, body {
 	height: 800px;
 	background-image: url(/static/img/slider.jpg); 
 	padding-left: 98px;
-	padding-right: 211px;
+	padding-right: 111px;
 	position: relative;
 }
 
@@ -77,7 +77,7 @@ html, body {
 	height: 23px;	
 	position: absolute;
 	top: 63px;
-	left: 1176px;
+	left: 1076px;
 	background: no-repeat;
 }
 .basket {
@@ -86,7 +86,7 @@ html, body {
 	height: 23px;	
 	position: absolute;
 	top: 63px;
-	left: 1210px;
+	left: 1110px;
 	background: no-repeat;
 }
 

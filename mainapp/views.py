@@ -10,9 +10,9 @@ import json
 
 def main (request):
     products = Product.objects.all()[:4]
-    basket = 0
+    basket = []
     if request.user.is_authenticated:
-        basket = sum(list(Basket.objects.filter(user=request.user).values_list('quantity', flat = True)))
+        basket = Basket.objects.filter(user=request.user)
     
     content = {
         'some_name' : 'Oleg Suslov',
@@ -41,9 +41,9 @@ def main (request):
     return render (request, 'mainapp/products.html', content) """
 
 def contact (request):
-    basket = 0
+    basket = []
     if request.user.is_authenticated:
-        basket = sum(list(Basket.objects.filter(user=request.user).values_list('quantity', flat = True)))
+        basket = Basket.objects.filter(user=request.user)
     
     contacts_data = []
     with open (os.path.join(settings.BASE_DIR, 'contacts.json'), 'r', encoding='utf-8') as f:
@@ -64,9 +64,9 @@ def products (request, pk=None):
     print(pk)
     title = 'продукты'
     links_menu = ProductCategory.objects.all()
-    basket = 0
+    basket = []
     if request.user.is_authenticated:
-        basket = sum(list(Basket.objects.filter(user=request.user).values_list('quantity', flat = True)))
+        basket = Basket.objects.filter(user=request.user)
         print (basket)
     if pk is not None:
         if pk == 0:
