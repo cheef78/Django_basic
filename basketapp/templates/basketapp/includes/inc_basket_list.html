@@ -1,13 +1,24 @@
-
+<div  style = " text-align:center; margin-left:0px; "  >
+        <span class="product_name" > &nbsp Изображение товара  &nbsp </span>
+        <span class="product_name" >&nbsp Категория &nbsp</span>
+        <span class="product_name">&nbsp Товар &nbsp</span>
+        <span class="product_price">&nbsp Стоимость товара, руб/шт  &nbsp</span>
+        <span class="product_price">&nbsp Количество, шт &nbsp</span>
+        <span class="product_cost">&nbsp Стоимость, руб &nbsp</span>
+</div>
+<br>
+<br>
+<br>
+<br>
 {% for item in basket_items %}
-    <div class="basket_record" style = " margin-left:20px; margin-bottom:20px; ">
-        <img src="/media/{{ item.product.image }}" alt="{{ item.product.short_desc }}" style = " whidth:100px; height:100px ">
-        <span class="category_name">{{ item.product.category.name }}</span>
-        <span class="product_name">{{ item.product.name }}</span>
-        <span class="product_price">{{ item.product.price }}&nbspруб</span>
-        <input type="number" name="{{ item.pk }}" min="0" value="{{ item.quantity }}">
-        <span class="product_cost">{{ item.cost }}&nbspруб</span>
-        <button class="btn btn-round">
+    <div class="basket_record" >
+        <img src="/media/{{ item.product.image }}" alt="{{ item.product.short_desc }}" style = "width:150px; height:100px;">
+        <span class="category_name" >&nbsp{{ item.product.category.name }}&nbsp</span>
+        <span class="product_name" ">&nbsp{{ item.product.name }}&nbsp</span>
+        <span class="product_price" >&nbsp{{ item.product.price }}&nbspруб</span>
+        <input style = "width:100px; text-align:center;" type="number" name="{{ item.pk }}" min="0" value="{{ item.quantity }}">
+        <span class="product_cost" >&nbsp{{ item.product_cost }}&nbspруб</span>
+        <button class="btn btn-round" >
             <a href="{% url 'basket:remove' item.pk %}" >
             удалить
             </a>
