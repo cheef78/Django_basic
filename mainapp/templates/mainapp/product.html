@@ -24,19 +24,19 @@
                     alt="{{ product.short_desc }}">
                 </div>
                 <div class="slider-control">
-                    <div class="block">
+                    <div class="block" style = "margin-left:5px;" >
                         <a href="#">
-                        <img src="/media/{{ product.image }}" alt="вариант 1" style = " whidth:70px; height:70px ">
+                        <img src="/media/{{ product.image }}" alt="вариант 1" style = " width:150px; height:100px ">
                         </a>
                     </div>
-                    <div class="block">
+                    <div class="block" style = "margin-left:5px;">
                         <a href="#">
-                        <img src="/media/{{ product.image }}" alt="вариант 2" style = " whidth:70px; height:70px " >
+                        <img src="/media/{{ product.image }}" alt="вариант 2" style = " width:150px; height:100px " >
                         </a>
                     </div>
-                    <div class="block">
+                    <div class="block" style = "margin-left:5px;">
                         <a href="#">
-                            <img src="/media/{{ product.image }}" alt="вариант 3" style = " whidth:70px; height:70px ">
+                            <img src="/media/{{ product.image }}" alt="вариант 3" style = " width:150px; height:100px ">
                         </a>
                     </div>
                 </div>
@@ -49,8 +49,10 @@
                 заказать
                 <i class="fa fa-chevron-right" aria-hidden="true"></i>
                 </a>
-                <div class="description-text">
-                    {{ product.description }}
+                <div class="description-text" style = "text-align:center;">
+                    {{ product.descript }}
+                    <br>
+                    Количество на складе - &nbsp {{ product.quantity}} &nbsp шт.
                 </div>
             </div>
         </div>
