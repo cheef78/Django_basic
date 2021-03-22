@@ -4,10 +4,10 @@
 <li><a href={% url 'contact' %} {% if request.resolver_match.url_name == 'contact' %} class="active" {% endif %} >контакты</a></li>
 {% if user.is_authenticated %}
 <li>
-{{ user.first_name|default:'Пользователь' }}
-<br>
-<a href="{% url 'auth:edit' %}"><img src='/media/{{ user.avatar }}' width="50" 
-   height="50" border="0" alt="NoPic"/></a>
+    <a href="{% url 'auth:edit' %}">
+    <img src='/media/{{ user.avatar }}' style = "width:50px; height:50px; border:0; margin:0; margin-top:-20px; " alt="NoPic"/>
+        <span style = "padding:0; margin:0; float:left;"> {{ user.first_name|default:'Пользователь' }} </span>
+    </a>
 </li>
 <li> 
 <a href="{% url 'auth:logout' %}">выйти</a>
