@@ -88,10 +88,19 @@ def category_update(request, pk):
         edit_form = ProductCategoryEditForm(instance=edit_category)
     content = {'title': title, 'update_form': edit_form}
     return render(request, 'adminapp/category_update.html', content)
-    
+
 @user_passes_test(lambda u: u.is_superuser)
 def category_delete(request, pk):
-    pass
+    title = 'категории/удаление'
+    category = get_object_or_404(ProductCategory, pk=pk)
+    if request.method == 'POST':
+    #user.delete()
+    #вместо удаления лучше сделаем неактивным
+        category.is_active = False
+        category.save()
+        return HttpResponseRedirect(reverse('admin:categories'))
+    content = {'title': title, 'category_to_delete': category}
+    return render(request, 'adminapp/category_delete.html', content)
 
 @user_passes_test(lambda u: u.is_superuser)
 def products(request, pk):
