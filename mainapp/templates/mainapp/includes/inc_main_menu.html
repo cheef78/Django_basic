@@ -15,6 +15,11 @@
 <a href="{% url 'auth:login' %}">войти</a>
 {% endif %}
 </li>
+{% if user.is_superuser %}
+<li>
+<a href="{% url 'admin:users' %}">админка</a>
+</li>
+{% endif %}
 <li>
 <a href="#" class="search" style = "background-image: url('{% static 'img/search.png' %}');left:1176px; "></a>
 </li>
