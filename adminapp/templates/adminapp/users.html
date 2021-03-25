@@ -4,9 +4,9 @@
 {% block content %}
 <div class="users_list">
     <button class="new_user">
-    <a href={% url 'admin:user_create' %}>
-    новый пользователь
-    </a>
+        <a href={% url 'admin:user_create' %}>
+        новый пользователь
+        </a>
     </button>
     {% for object in objects %}
     <div
@@ -45,7 +45,7 @@
             age:<br>
             {{ object.age }} лет
         </div>
-        <div class="user_email">
+        <div class="user_email" style = "word-break:break-all;">
             email:<br>
             {{ object.email }}
         </div>

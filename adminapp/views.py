@@ -11,6 +11,7 @@ from django.urls import reverse
 from authapp.forms import ShopUserRegisterForm
 from adminapp.forms import ShopUserAdminEditForm
 from adminapp.forms import ProductCategoryEditForm
+from adminapp.forms import ProductCategoryCreateForm
 
 @user_passes_test(lambda u: u.is_superuser)
 def users(request):
@@ -73,7 +74,16 @@ def categories(request):
     return render(request, 'adminapp/categories.html', content)
 
 def category_create(request):
-    pass
+    title = 'категории/создание'
+    if request.method == 'POST':
+        category_create_form = ProductCategoryCreateForm(request.POST, request.FILES)
+        if category_create_form.is_valid():
+            category_create_form.save()
+            return HttpResponseRedirect(reverse('admin:categories'))
+    else:
+        category_create_form = ProductCategoryCreateForm()
+    content = {'title': title, 'update_form': category_create_form}
+    return render(request, 'adminapp/category_update.html', content)
 
 @user_passes_test(lambda u: u.is_superuser)
 def category_update(request, pk):
