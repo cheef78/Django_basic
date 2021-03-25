@@ -20,6 +20,7 @@ class Product(models.Model):
     descript = models.TextField(blank=True, verbose_name='полное описание')
     price = models.DecimalField(verbose_name='цена, руб.', decimal_places=0, max_digits=8, default=0)
     quantity = models.SmallIntegerField(verbose_name='количество на складе, шт.', default=0)
+    is_active = models.BooleanField(verbose_name='активна', default=True)
 
 
     def __str__(self):
