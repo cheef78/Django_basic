@@ -1,10 +1,10 @@
 {% extends 'adminapp/base.html' %}
 {% load static %}
 {% block content %}
-    <div class="user_delete" style = "text-align:center;">
+    <div class="user_delete" style = "text-align:center; ">
         Уверены, что хотите удалить категорию товаров:
         <br>
-        <span style = "text-align:center; font-size: 200%; font-weight: bold;">
+        <span style = "text-align:center; font-size: 200%; font-weight: bold;  text-transform:uppercase; ">
             {{ category_to_delete.name }} ? 
         </span>
         <form action="{% url 'admin:category_delete' category_to_delete.pk %}"
