@@ -5,9 +5,9 @@
         Уверены, что хотите удалить категорию товаров:
         <br>
         <span style = "text-align:center; font-size: 200%; font-weight: bold;  text-transform:uppercase; ">
-            {{ category_to_delete.name }} ? 
+            {{ object.name }} ? 
         </span>
-        <form action="{% url 'admin:category_delete' category_to_delete.pk %}"
+        <form action="{% url 'admin:category_delete' object.pk %}"
             method="post">
             {% csrf_token %}
             <input class="btn btn-danger" type="submit" value="удалить">

@@ -15,6 +15,10 @@ from adminapp.forms import ProductCategoryCreateForm
 from adminapp.forms import ProductEditForm
 from django.views.generic.list import ListView
 from django.utils.decorators import method_decorator
+from django.views.generic.edit import CreateView, UpdateView
+from django.urls import reverse_lazy
+from django.views.generic.edit import DeleteView
+from django.views.generic.detail import DetailView
 
 
 class UsersListView(ListView):
@@ -23,6 +27,46 @@ class UsersListView(ListView):
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
+
+class ProductCategoryCreateView(CreateView):
+    model = ProductCategory
+    template_name = 'adminapp/category_update.html'
+    success_url = reverse_lazy('admin:categories')
+    fields = '__all__'
+
+class ProductCategoryUpdateView(UpdateView):
+    model = ProductCategory
+    template_name = 'adminapp/category_update.html'
+    success_url = reverse_lazy('admin:categories')
+    fields = '__all__'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'категории/редактирование'
+        return context
+
+class ProductCategoryDeleteView(DeleteView):
+    model = ProductCategory
+    template_name = 'adminapp/category_delete.html'
+    success_url = reverse_lazy('admin:categories')
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.is_active = False
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'adminapp/product_read.html'
+
+
+
+
+
+
+
+
+
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -34,6 +78,7 @@ def users(request):
         'objects': users_list
     }
     return render(request, 'adminapp/users.html', content)
+
 
 @user_passes_test(lambda u: u.is_superuser)
 def user_create(request):
