@@ -60,13 +60,22 @@ class ProductDetailView(DetailView):
     template_name = 'adminapp/product_read.html'
 
 
+class ProductCreateView(CreateView):
+    model = Product
+    template_name = 'adminapp/product_create.html'
+    success_url = reverse_lazy('admin:categories')
+    fields = '__all__'
+    
 
-
-
-
-
-
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = self.kwargs['pk']
+        category = ProductCategory.objects.filter(pk=pk)
+        context['title'] = 'категории/редактирование'
+        context['pk'] = pk
+        context['category'] = category[0]
+        print (context)
+        return context 
 
 
 @user_passes_test(lambda u: u.is_superuser)

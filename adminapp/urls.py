@@ -22,7 +22,10 @@ urlpatterns = [
     path('categories/delete/<int:pk>/', adminapp.ProductCategoryDeleteView.as_view(), name='category_delete'),
     
 
-    path('products/create/category/<int:pk>/', adminapp.product_create, name='product_create'),
+    #path('products/create/category/<int:pk>/', adminapp.product_create, name='product_create'),
+    path('products/create/category/<int:pk>/', adminapp.ProductCreateView.as_view(), name='product_create'),
+
+
     path('products/read/category/<int:pk>/', adminapp.products, name='products'),
     
     #path('products/read/<int:pk>/', adminapp.product_read, name='product_read'),
