@@ -9,11 +9,7 @@ import random
 # Create your views here.
 
 
-def get_basket(user):
-    if user.is_authenticated:
-        return Basket.objects.filter(user=user)
-    else:
-        return []
+
 
 def get_hot_product():
     products = Product.objects.all()
@@ -31,7 +27,7 @@ def main (request):
         'some_name' : 'Oleg Suslov',
         'title' : 'Главная',
         'products' : products,
-        'basket' : get_basket(request.user),
+       
 
     }
     return render (request, 'mainapp/index.html', content)
@@ -64,7 +60,7 @@ def contact (request):
         'some_name' : 'Oleg Suslov',
         'title' : 'Контакты',
         'contacts_data' : contacts_data,
-        'basket' : get_basket(request.user),
+        
     }
     return render (request, 'mainapp/contact.html', content)
 
@@ -89,7 +85,7 @@ def products (request, pk=None):
             'links_menu' : links_menu,
             'category' : category,
             'products' : products,
-            'basket' : get_basket(request.user),
+            
             'same_products' : same_products,
             'hot_product': hot_product,
             'some_name' : 'Oleg Suslov',
@@ -101,7 +97,7 @@ def products (request, pk=None):
         'links_menu' : links_menu,
         'same_products' : same_products,
         'hot_product': hot_product,
-        'basket' : get_basket(request.user),
+        
         'some_name' : 'Oleg Suslov',
     }
     return render(request, 'mainapp/products.html' , content)
@@ -112,6 +108,6 @@ def product(request, pk):
     'title': title,
     'links_menu': ProductCategory.objects.all(),
     'product': get_object_or_404(Product, pk=pk),
-    'basket': get_basket(request.user),
+    
     }
     return render(request, 'mainapp/product.html', content)
