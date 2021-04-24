@@ -73,6 +73,36 @@ def send_verify_mail(user):
     {settings.DOMAIN_NAME} перейдите по ссылке:\n{settings.DOMAIN_NAME}{verify_link}'
     return send_mail(title, message, settings.EMAIL_HOST_USER, [user.email], fail_silently=False)
 
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+# def send_verify_mail(user):
+# verify_link = reverse('auth:verify', args=[user.username, user.activation_key])
+# title = f'Подтверждение учетной записи {user.username}'
+# message = 'Для подтверждения учетной записи ' + str(user.username) + ' на портале ' + \
+# str(settings.DOMAIN_NAME) + ' перейдите по ссылке: ' + str(settings.DOMAIN_NAME) + str(verify_link)
+# print (message)
+# fromaddr = settings.EMAIL_HOST_USER
+# toaddr = user.email
+# mypass = settings.EMAIL_HOST_PASSWORD
+# msg = MIMEMultipart()
+# msg['From'] = fromaddr
+# msg['To'] = toaddr
+# msg['Subject'] = title
+# msg.attach(MIMEText(message, 'plain'))
+# print ("body after")
+# server = smtplib.SMTP('smtp.gmail.com:587')
+# server.starttls()
+# server.login(fromaddr, mypass)
+# server.sendmail(fromaddr, toaddr, msg.as_string())
+# ret = server.quit()
+# if ret == '-1':
+# return False
+# else:
+# return True
+
+# # return send_mail(title, message, settings.EMAIL_HOST_USER, [user.email], fail_silently=False)
 
 
 def register(request):
