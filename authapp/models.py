@@ -34,10 +34,10 @@ class ShopUserProfile(models.Model):
     gender = models.CharField(verbose_name='пол', max_length=1, choices=GENDER_CHOICES, blank=True)
     
     @receiver(post_save, sender=ShopUser)
-    def create_user_profile(self, sender, instance, created, **kwargs):
+    def create_user_profile(sender, instance, created, **kwargs):
         if created:
             ShopUserProfile.objects.create(user=instance)
                 
     @receiver(post_save, sender=ShopUser)
-    def save_user_profile(self, sender, instance, **kwargs):
+    def save_user_profile(sender, instance, **kwargs):
         instance.shopuserprofile.save()

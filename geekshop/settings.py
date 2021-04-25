@@ -167,3 +167,10 @@ with open(os.path.join(BASE_DIR, 'mainapp/JSON/secrets.json'), 'r', encoding='ut
     secret_data = json.load(f)
 SOCIAL_AUTH_VK_OAUTH2_KEY = secret_data['SOCIAL_AUTH_VK_OAUTH2_KEY']
 SOCIAL_AUTH_VK_OAUTH2_SECRET = secret_data['SOCIAL_AUTH_VK_OAUTH2_SECRET']
+# DOMAIN_NAME = secret_data['DOMAIN_NAME']
+# EMAIL_HOST = secret_data['EMAIL_HOST']
+# EMAIL_PORT = secret_data['EMAIL_PORT']
+# EMAIL_HOST_USER = secret_data['EMAIL_HOST_USER']
+# EMAIL_HOST_PASSWORD = secret_data['EMAIL_HOST_PASSWORD']
+# EMAIL_USE_SSL = secret_data['EMAIL_USE_SSL']
+
