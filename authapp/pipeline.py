@@ -23,7 +23,7 @@ def save_user_profile(backend, user, response, *args, **kwargs):
     if data['about']:
         user.shopuserprofile.aboutMe = data['about']
     if data['photo_max']:
-        out = (settings.MEDIA_ROOT + '\\' + user.username + ".jpg")
+        out = (settings.MEDIA_ROOT + '\\users_avatars\\' + user.username + ".jpg")
         urlretrieve(data['photo_max'], out)
         user.avatar = out
    
