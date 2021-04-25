@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import json
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 
     'mainapp',
     'authapp',
@@ -155,3 +157,13 @@ EMAIL_USE_SSL = False
 #вариант логирования сообщений почты в виде файлов вместо отправки
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = 'tmp/email-messages/'
+
+AUTHENTICATION_BACKENDS = (
+'django.contrib.auth.backends.ModelBackend',
+'social_core.backends.vk.VKOAuth2',
+)
+# Загружаем секреты из файла
+with open(os.path.join(BASE_DIR, 'mainapp/JSON/secrets.json'), 'r', encoding='utf-8') as f:
+    secret_data = json.load(f)
+SOCIAL_AUTH_VK_OAUTH2_KEY = secret_data['SOCIAL_AUTH_VK_OAUTH2_KEY']
+SOCIAL_AUTH_VK_OAUTH2_SECRET = secret_data['SOCIAL_AUTH_VK_OAUTH2_SECRET']

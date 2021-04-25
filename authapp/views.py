@@ -130,7 +130,7 @@ def verify(request, username, activation_key):
             user.is_active = True
             user.activation_key = ''
             user.save()
-            auth.login(request, user)
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return render(request, 'authapp/verification.html')
         else:
             print(f'error activation user: {user}')
